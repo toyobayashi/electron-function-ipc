@@ -1,7 +1,7 @@
 {
   "name": "electron-function-ipc",
   "version": "1.0.0",
-  "description": "",
+  "description": "Make ipcRenderer/ipcMain support passing function as parameter.",
   "main": "index.js",
   "keywords": ["electron", "ipc"],
   "author": "toyobayashi",
