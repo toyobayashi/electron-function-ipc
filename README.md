@@ -22,7 +22,8 @@ ipcMain.on('123', async function (e, rendererCallback) {
 ```
 
 ```js
-const ipcRenderer = require('electron-function-ipc/renderer')
+// renderer process
+const ipcRenderer = require('electron-function-ipc/renderer.js')
 
 ipcRenderer.send('123', async function rendererCallback(mainCallback) {
   console.log(mainCallback.toString())
@@ -43,4 +44,5 @@ ipcRenderer.send('123', async function rendererCallback(mainCallback) {
 ## Note
 
 * Function invoked in another process returns promise even if it is not an async function, so you can use async/await syntax.
-* Passing es5 class constructor is also ok but method is not supported.
+* Passing es5/es6 class is also ok but method is not supported.
+* Function `this` can not be changed by `call()` / `apply()` / `bind()`.
