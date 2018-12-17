@@ -16,7 +16,8 @@ ipcMain.on('123', async function (e, rendererCallback) {
   }) // return Promise
   console.log(returnFunction.toString())
   console.log(returnFunction.name)
-  returnFunction('888')
+  const obj = await new returnFunction('888')
+  console.log(obj.m)
 })
 ```
 
@@ -34,11 +35,12 @@ ipcRenderer.send('123', async function rendererCallback(mainCallback) {
   }
 
   return function returnFunction(a) {
-    console.log(a)
+    this.m = a
   }
 })
 ```
 
 ## Note
 
-Function invoked in another process returns promise even if it is not an async function, so you can use async/await syntax.
+* Function invoked in another process returns promise even if it is not an async function, so you can use async/await syntax.
+* Passing es5 class constructor is also ok but method is not supported.
